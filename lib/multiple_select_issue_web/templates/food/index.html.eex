@@ -1,0 +1,28 @@
+<h1 class="">
+  Foods
+  <span class="float-right"><%= link "New Food", to: Routes.food_path(@conn, :new), class: "btn btn-outline-primary" %></span>
+</h1>
+
+<table class="table table-striped datatables-responsive w-100 ">
+  <thead class="">
+    <tr>
+      <th data-priority="1">Name</th>
+      <th data-priority="3">Barcode</th>
+      <th data-priority="2">Premium</th>
+      <th data-priority="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for food <- @foods do %>
+    <tr>
+      <td><%= food.name %></td>
+      <td><%= food.barcode %></td>
+      <td><%= food.paid %></td>
+      <td class="text-right">
+        <span><%= link "Edit", to: Routes.food_path(@conn, :edit, food), class: "btn btn-outline-primary" %></span>
+        <span><%= link "View", to: Routes.food_path(@conn, :show, food), class: "btn btn-primary" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

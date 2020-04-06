@@ -1,0 +1,8 @@
+<h1>
+  Edit Food
+  <span class="float-right"><%= link "Delete", to: Routes.food_path(@conn, :delete, @food), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger" %></span>
+</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.food_path(@conn, :update, @food)) %>
+
+<span><%= link "Back", to: Routes.food_path(@conn, :index), class: "btn btn-primary" %></span>

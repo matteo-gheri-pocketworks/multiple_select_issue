@@ -1,0 +1,10 @@
+{application,versionary,
+             [{applications,[kernel,stdlib,elixir,logger]},
+              {description,"Elixir plug for handling API versioning"},
+              {modules,['Elixir.Versionary.Plug.EnsureVersion',
+                        'Elixir.Versionary.Plug.ErrorHandler',
+                        'Elixir.Versionary.Plug.Handler',
+                        'Elixir.Versionary.Plug.PhoenixErrorHandler',
+                        'Elixir.Versionary.Plug.VerifyHeader']},
+              {registered,[]},
+              {vsn,"0.3.1"}]}.

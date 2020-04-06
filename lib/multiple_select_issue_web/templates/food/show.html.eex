@@ -1,0 +1,39 @@
+<h1 class="mt-5">
+  <span class="back-btn-span"> <%= link "< Back", to: Routes.food_path(@conn, :index), class: "" %></span>
+  <span class="float-right"><%= link "Edit", to: Routes.food_path(@conn, :edit, @food), class: "btn btn-outline-primary btn-fixed-width" %></span>
+  <%= @food.name %>
+  <%= if @food.paid do %>
+    <span class="badge badge-tertiary px-2 py-2 mr-2">PREMIUM</span>
+  <% end %>
+  <%= if @food.liquid do %>
+    <span class="badge badge-primary px-2 py-2 mr-2">LIQUID</span>
+  <% end %>
+</h1>
+
+<div class="card" >
+  <div class="card-body px-5 bg-light">
+
+    <div class="food-fields-box">
+
+      <div>
+        <strong>Categories</strong>
+        <%= if @food.categories do 
+         for category <- @food.categories do
+          category.name <> " " end
+         end %>
+      </div>
+
+      <div>
+        <strong>Keywords</strong>
+        <%= @food.keywords %>
+      </div>
+
+    </div>
+
+    <strong>Note</strong>
+    <p class="card-text"><%= @food.note %></p>
+    
+  </div>
+</div>
+
+

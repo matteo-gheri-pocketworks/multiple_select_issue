@@ -1,0 +1,75 @@
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="col-12">
+
+    <div class="form-group row">
+      <div class="col-md-6 col-12">
+        <%= label f, :name %>
+        <%= text_input f, :name, class: "form-control" %>
+        <%= error_tag f, :name %>
+      </div>
+      <div class="col-md-6 col-12">
+        <%= label f, :barcode %>
+        <%= text_input f, :barcode, class: "form-control" %>
+        <%= error_tag f, :barcode %>
+      </div>
+    </div>
+
+    
+    
+    <div class="form-group row">
+
+      
+      <div class="col-md-6 col-12">
+        <% selected_categories = if assigns[:food] do @food.categories else [] end %>
+        <%= label f, :categories %>
+          <%= multiple_select f, :categories, 
+          entities_for_select(@categories, :name), 
+          selected: Enum.map(selected_categories, &(&1.id)),
+          class: "form-control" %>
+        <%= error_tag f, :categories %>
+      </div>
+    </div>
+    
+    <div class="form-group row">
+      <div class="col-md-6 col-12">
+        <%= label f, :keywords %>
+        <%= text_input f, :keywords, class: "form-control" %>
+        <%= error_tag f, :keywords %>
+      </div>
+      
+    </div>
+    
+    <div class="form-group row">
+      
+      <div class="col-md-6 col-12">
+        <%= label f, :note %>
+        <%= text_input f, :note, class: "form-control" %>
+        <%= error_tag f, :note %>
+      </div>
+    </div>
+    
+    <div class="custom-control custom-checkbox">
+      <%= checkbox f, :paid, class: "custom-control-input", id: "paid" %>
+      <label class="custom-control-label" for="paid">Paid?</label>
+      <%= error_tag f, :paid %>
+    </div>
+
+    <div class="custom-control custom-checkbox mt-2 mb-4">
+      <%= checkbox f, :liquid, class: "custom-control-input", id: "liquid" %>
+      <label class="custom-control-label" for="liquid">Liquid?</label>
+      <%= error_tag f, :liquid %>
+    </div>
+
+  </div>
+
+
+  <div>
+    <%= submit "Save", class: "btn btn-primary btn-fixed-width float-left mr-4" %>
+  </div>
+<% end %>
